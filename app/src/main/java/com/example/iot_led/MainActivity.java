@@ -80,7 +80,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
                 if(current_player != 0){
                     // Abandon
-
+                    leaveParty();
                 }
 
             }
@@ -133,11 +133,15 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         }
 
         resultat.setVisibility(View.VISIBLE);
+        start.setVisibility(View.VISIBLE);
 
         start.setText("Restart");
     }
 
     private void leaveParty(){
+        start.setVisibility(View.INVISIBLE);
+
+        send_message.send("(0)");
 
     }
 
@@ -152,10 +156,13 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         current_player = 0;
 
         start.setText("Start");
+
+        start.setVisibility(View.INVISIBLE);
     }
 
     private void startParty(){
         start.setText("Abandon");
+        start.setVisibility(View.VISIBLE);
 
         selectJ2.setClickable(false);
         selectJ1.setClickable(false);
